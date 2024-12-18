@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwin Mullachery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+        .section {
+            padding: 50px 15px;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a {
+            text-decoration: none;
+        }
+        .navbar {
+            background-color: #343a40;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: rgba(222, 222, 222, 0.905) !important;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .navbar .nav-link {
+            padding: 7px 0;
+        }
+        .navbar .nav-link:hover {
+            color: white !important;
+            transform: scale(1.1);
+        }
+        .navbar .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            animation: underline 0.3s ease-in-out;
+        }
+        @keyframes underline {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+        .navbar-nav {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .navbar + * {
+            margin-top: 75px;
+        }
+        .card-columns {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        .card {
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .card-columns {
+                column-count: 1;
+            }
+        }
+        .skill-box {
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .skill-box h5 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .skill-box p {
+            font-size: 14px;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .language-item {
+            background-color: white;
+            color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .language-item strong {
+            font-weight: bold;
+        }
+        .py-5 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+        .contact-form input, .contact-form textarea {
+            background-color: white;
+            color: #333;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: rgba(37, 37, 37, 0.542);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #2c2c2ce4;
+        }
+        .contact-details-box {
+            background-color: rgba(37, 37, 37, 0.542);
+            color: rgb(187, 187, 187);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-details-box a {
+            color: white; 
+            text-decoration: none;
+        }
+        .contact-details-box a:hover {
+            text-decoration: underline; 
+        }
+        .education-description {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 10px;
+        }
+        .education-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .education-item .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .collapse {
+            transition: height 0.3s ease;
+        }
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        #home {
+            position: relative;
+            padding: 100px 0;
+            color: #fff;
+        }
+        .home-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .home-photo img {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .home-text {
+            margin-left: 30px;
+            text-align: left;
+        }
+        .home-text .btn {
+            align-self: flex-start;
+        }
+        .home-text h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .profession {
+            font-size: 20px;
+            font-style: italic;
+        }
+        .greeting-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .greeting-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .carousel-item {
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-indicators button {
+            background-color: black;
+        }
+        .carousel-indicators .active {
+            background-color: #383838;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: black;
+            border-radius: 50%;
+        }
+        .certificate-links {
+            padding: 30px;
+            margin-bottom: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .certificate-links .certificate-link {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .certificate-links .certificate-link:hover {
+            background-color: #656464;
+            color: white;
+            border-color: #a0a0a0;
+        }
+        @media (max-width: 768px) {
+            .certificate-links {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home" style="font-family: 'Times New Roman', serif;"><b>My Profile</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home" style="font-family: 'Times New Roman', serif;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects" style="font-family: 'Times New Roman', serif;">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates" style="font-family: 'Times New Roman', serif;">Certificates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education" style="font-family: 'Times New Roman', serif;">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills" style="font-family: 'Times New Roman', serif;">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#languages" style="font-family: 'Times New Roman', serif;">Languages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" style="font-family: 'Times New Roman', serif;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="greeting-section">
+          <img src="welcome.jpg" alt="Welcome Image" class="greeting-img">   
+        </div>
+    </div>
+
+    <header id="home" class="home-section bg-secondary py-5">
+        <div class="container-fluid text-center position-relative">
+            <div class="home-content d-flex align-items-center">
+                <div class="home-photo ms-auto col-md-6">
+                    <img src="profile.jpg" alt="Ashwin Kumar M" class="img-fluid rounded-circle">
+                </div>
+                <div class="home-text ms-auto col-md-6">
+                    <h1>Ashwin Kumar M</h1>
+                    <p class="profession">Web Developer / Python Developer</p>
+                    <a href="#connect" class="btn btn-outline btn-light text-dark mt-3 ms-2"><b>Get in Touch</b></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about text-center section bg-light py-5">
+        <div class="container-fluid">
+            <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700; color: #343a40;"><b>ABOUT ME</b></h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="card shadow-lg p-4" style="border-radius: 10px; background-color: #ffffff;">
+                        <div class="card-body">
+                            <p class="fs-5 text-start" style="color: #6c757d; line-height: 1.6;">
+                                Hi, I'm <b>Ashwin Kumar M</b>, a driven and detail-oriented developer passionate about crafting innovative and efficient digital solutions. With a solid educational foundation and a commitment to continuous improvement, I bring technical expertise and creative problem-solving to every project I undertake.
+                                <br><br>
+                                I specialize in designing and building responsive, user-friendly interfaces, focusing on delivering seamless and impactful experiences. Whether working independently or as part of a team, I prioritize clear communication, organized execution, and meeting project objectives on time.
+                                <br><br>
+                                With experience developing platforms that emphasize intuitive design and functionality, I excel at transforming complex challenges into streamlined solutions. My ability to quickly learn new skills and adapt to emerging technologies ensures I stay ahead in the fast-evolving tech landscape.
+                                <br><br>
+                                When I'm not immersed in development, I enjoy exploring ways to enhance infrastructure, optimize systems, and contribute to innovative project growth. My goal is to leverage my technical knowledge and creative approach to build solutions that make a meaningful impact.
+                                <br><br>
+                                Feel free to explore my portfolio to see how I combine creativity, precision, and technical expertise to bring ideas to life. Let's collaborate to create impactful projects that inspire and deliver results!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <section id="projects" class="projects section">
+        <div class="container-fluid">
+            <h2 class="text-center"  style="font-family: 'Times New Roman', serif;"><b>PROJECTS</b></h2>
+            <div class="row pt-4" id="projects-row">
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 2px solid black; height: 450px;">
+                        <img src="p1.jpg" class="card-img-top image-fluid" alt="Text-to-Speech Converter">
+                        <div class="card-body">
+                            <h5 class="card-title">Text-to-Speech Converter (2024)</h5>
+                            <p class="card-text">Conducted in-depth research on text-to-speech conversion technologies, exploring customizable voice options and user-focused design principles. The study focused on understanding the technical intricacies and potential applications of this technology.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 2px solid black; height: 450px;">
+                        <img src="p2.jpg" class="card-img-top image-fluid" alt="Tech-Learn Online Learning Platform">
+                        <div class="card-body">
+                            <h5 class="card-title">Tech-Learn Online Learning Platform (2024)</h5>
+                            <p class="card-text">Designed and developed an engaging online platform using HTML, CSS, and JavaScript. The project features an intuitive interface for browsing and exploring technology courses, showcasing creative design and functional implementation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 2px solid black; height: 450px;">
+                        <img src="p3.jpg" class="card-img-top image-fluid" alt="YouTube Clone">
+                        <div class="card-body">
+                            <h5 class="card-title">YouTube Clone (2024)</h5>
+                            <p class="card-text">Built an imitation of YouTube using HTML and CSS, reimagining its design with a personal touch. This project demonstrates my ability to replicate complex layouts while adding creative elements for enhanced visual appeal and user experience. It helped me refine my skills in front-end design.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 extra-projects" style="display: none;">
+                    <div class="card" style="border: 2px solid black; height: 450px;">
+                        <img src="p4.jpg" class="card-img-top image-fluid" alt="Netflix Clone">
+                        <div class="card-body">
+                            <h5 class="card-title">Netflix Clone (2024)</h5>
+                            <p class="card-text">Built an inspired version of Netflix using HTML and CSS, replicating its aesthetic and layout with original elements. This project demonstrates imaginative design and attention to detail in recreating key visual components.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 extra-projects" style="display: none;">
+                    <div class="card" style="border: 2px solid black; height: 450px;">
+                        <img src="p5.jpg" class="card-img-top image-fluid" alt="Java Calculator">
+                        <div class="card-body">
+                            <h5 class="card-title">Java Calculator (2024)</h5>
+                            <p class="card-text">Developed a calculator application in Java with an app-like interface to perform basic arithmetic operations. This project combines functionality with clean design, offering a practical and visually appealing user experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-secondary" id="see-more-btn"><b>See More</b></button>
+                <button class="btn btn-secondary" id="see-less-btn" style="display: none;"><b>See Less</b></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="py-5 bg-light">
+        <div class="container-fluid col-10">
+          <h2 class="text-center mb-4" style="font-family: 'Times New Roman', serif;"><b>CERTIFICATES</b></h2>
+          <div id="certificateCarousel" class="carousel slide" data-bs-ride="carousel" data-wrap="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#certificateCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#certificateCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#certificateCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="c1.jpg" class="d-block w-100 image-fluid" alt="Certificate 1">
+              </div>
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="c2.jpg" class="d-block w-100 image-fluid" alt="Certificate 2">
+              </div>
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="c3.jpg" class="d-block w-100 image-fluid" alt="Certificate 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#certificateCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#certificateCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="certificate-links mt-5" style="font-family: 'Times New Roman', serif;">
+            <h3 class="text-center mb-4">CERTIFICATE LINKS</h3>
+            <ul class="list-unstyled text-center" style="font-family: 'Georgia', serif;">
+                <li><a href="https://simpli.app.link?%24identity_id=1380047394510800367&channel=android&feature=sharing&type=0&duration=0&source=android&data=eyIkb2dfdGl0bGUiOiJBc2h3aW4gS3VtYXIgTSAgaGFzIHN1Y2Nlc3NmdWxseSBjb21wbGV0ZWQgdGhlIFJlYWN0SlMgZm9yIEJlZ2lubmVycyBvbmxpbmUgY291cnNlLiIsIiRjYW5vbmljYWxfaWRlbnRpZmllciI6Ijc2NDc1MTciLCIkb2dfZGVzY3JpcHRpb24iOiJMZWFybiB0b2RheSdzIG1vc3QgaW4tZGVtYW5kIHNraWxscyBmb3IgZnJlZSBhdCBTa2lsbFVwIGJ5IFNpbXBsaWxlYXJuLiIsIiRvZ19pbWFnZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC83NjQ3NTE3XzcyMzYyNzMxNzMzNzYxNTEwMjcyLnBuZyIsIiRwdWJsaWNseV9pbmRleGFibGUiOiJ0cnVlIiwiJGRlc2t0b3BfdXJsIjoiaHR0cHM6XC9cL3d3dy5zaW1wbGlsZWFybi5jb21cL3NraWxsdXAtY2VydGlmaWNhdGUtbGFuZGluZz90b2tlbj1leUpqYjNWeWMyVmZhV1FpT2lJeE56STFJaXdpWTJWeWRHbG1hV05oZEdWZmRYSnNJam9pYUhSMGNITTZYQzljTDJObGNuUnBabWxqWVhSbGN5NXphVzF3YkdsalpHNHVibVYwWEM5emFHRnlaVnd2TnpZME56VXhOMTgzTWpNMk1qY3pNVGN6TXpjMk1UVXhNREkzTWk1d2JtY2lMQ0oxYzJWeWJtRnRaU0k2SWtGemFIZHBiaUJMZFcxaGNpQk5JQ0o5JnV0bV9zb3VyY2U9c2hhcmVkLWNlcnRpZmljYXRlJnV0bV9tZWRpdW09YXBwX2xtcyZ1dG1fY2FtcGFpZ249c2hhcmVkLWNlcnRpZmljYXRlLXByb21vdGlvbiZyZWZlcnJlcj1odHRwcyUzQSUyRiUyRmNlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0JTJGc2hhcmUlMkY3NjQ3NTE3XzcyMzYyNzMxNzMzNzYxNTEwMjcyLnBuZyIsIiRhbmRyb2lkX3VybCI6Imh0dHBzOlwvXC93d3cuc2ltcGxpbGVhcm4uY29tXC9za2lsbHVwLWNlcnRpZmljYXRlLWxhbmRpbmc%2FdG9rZW49ZXlKamIzVnljMlZmYVdRaU9pSXhOekkxSWl3aVkyVnlkR2xtYVdOaGRHVmZkWEpzSWpvaWFIUjBjSE02WEM5Y0wyTmxjblJwWm1sallYUmxjeTV6YVcxd2JHbGpaRzR1Ym1WMFhDOXphR0Z5WlZ3dk56WTBOelV4TjE4M01qTTJNamN6TVRjek16YzJNVFV4TURJM01pNXdibWNpTENKMWMyVnlibUZ0WlNJNklrRnphSGRwYmlCTGRXMWhjaUJOSUNKOSZ1dG1fc291cmNlPXNoYXJlZC1jZXJ0aWZpY2F0ZSZ1dG1fbWVkaXVtPWFwcF9sbXMmdXRtX2NhbXBhaWduPXNoYXJlZC1jZXJ0aWZpY2F0ZS1wcm9tb3Rpb24mcmVmZXJyZXI9aHR0cHMlM0ElMkYlMkZjZXJ0aWZpY2F0ZXMuc2ltcGxpY2RuLm5ldCUyRnNoYXJlJTJGNzY0NzUxN183MjM2MjczMTczMzc2MTUxMDI3Mi5wbmciLCJzb3VyY2UiOiJhbmRyb2lkIn0%3D" target="_blank" class="certificate-link">Certificate 1 - ReactJS for Beginners</a></li>
+                <li><a href="https://simpli.app.link?%24identity_id=1380047394510800367&channel=android&feature=sharing&type=0&duration=0&source=android&data=eyIkb2dfdGl0bGUiOiJBc2h3aW4gS3VtYXIgTSBoYXMgc3VjY2Vzc2Z1bGx5IGNvbXBsZXRlZCB0aGUgR2V0dGluZyBzdGFydGVkIHdpdGggTm9kZUpTIG9ubGluZSBjb3Vyc2UuIiwiJGNhbm9uaWNhbF9pZGVudGlmaWVyIjoiNzY0ODExMiIsIiRvZ19kZXNjcmlwdGlvbiI6IkxlYXJuIHRvZGF5J3MgbW9zdCBpbi1kZW1hbmQgc2tpbGxzIGZvciBmcmVlIGF0IFNraWxsVXAgYnkgU2ltcGxpbGVhcm4uIiwiJG9nX2ltYWdlX3VybCI6Imh0dHBzOlwvXC9jZXJ0aWZpY2F0ZXMuc2ltcGxpY2RuLm5ldFwvc2hhcmVcLzc2NDgxMTJfNzIzNjI3MzE3MzM3NzY2NzE4NTkucG5nIiwiJHB1YmxpY2x5X2luZGV4YWJsZSI6InRydWUiLCIkZGVza3RvcF91cmwiOiJodHRwczpcL1wvd3d3LnNpbXBsaWxlYXJuLmNvbVwvc2tpbGx1cC1jZXJ0aWZpY2F0ZS1sYW5kaW5nP3Rva2VuPWV5SmpiM1Z5YzJWZmFXUWlPaUl4TnpRMklpd2lZMlZ5ZEdsbWFXTmhkR1ZmZFhKc0lqb2lhSFIwY0hNNlhDOWNMMk5sY25ScFptbGpZWFJsY3k1emFXMXdiR2xqWkc0dWJtVjBYQzl6YUdGeVpWd3ZOelkwT0RFeE1sODNNak0yTWpjek1UY3pNemMzTmpZM01UZzFPUzV3Ym1jaUxDSjFjMlZ5Ym1GdFpTSTZJa0Z6YUhkcGJpQkxkVzFoY2lCTkluMCZ1dG1fc291cmNlPXNoYXJlZC1jZXJ0aWZpY2F0ZSZ1dG1fbWVkaXVtPWFwcF9sbXMmdXRtX2NhbXBhaWduPXNoYXJlZC1jZXJ0aWZpY2F0ZS1wcm9tb3Rpb24mcmVmZXJyZXI9aHR0cHMlM0ElMkYlMkZjZXJ0aWZpY2F0ZXMuc2ltcGxpY2RuLm5ldCUyRnNoYXJlJTJGNzY0ODExMl83MjM2MjczMTczMzc3NjY3MTg1OS5wbmciLCIkYW5kcm9pZF91cmwiOiJodHRwczpcL1wvd3d3LnNpbXBsaWxlYXJuLmNvbVwvc2tpbGx1cC1jZXJ0aWZpY2F0ZS1sYW5kaW5nP3Rva2VuPWV5SmpiM1Z5YzJWZmFXUWlPaUl4TnpRMklpd2lZMlZ5ZEdsbWFXTmhkR1ZmZFhKc0lqb2lhSFIwY0hNNlhDOWNMMk5sY25ScFptbGpZWFJsY3k1emFXMXdiR2xqWkc0dWJtVjBYQzl6YUdGeVpWd3ZOelkwT0RFeE1sODNNak0yTWpjek1UY3pNemMzTmpZM01UZzFPUzV3Ym1jaUxDSjFjMlZ5Ym1GdFpTSTZJa0Z6YUhkcGJpQkxkVzFoY2lCTkluMCZ1dG1fc291cmNlPXNoYXJlZC1jZXJ0aWZpY2F0ZSZ1dG1fbWVkaXVtPWFwcF9sbXMmdXRtX2NhbXBhaWduPXNoYXJlZC1jZXJ0aWZpY2F0ZS1wcm9tb3Rpb24mcmVmZXJyZXI9aHR0cHMlM0ElMkYlMkZjZXJ0aWZpY2F0ZXMuc2ltcGxpY2RuLm5ldCUyRnNoYXJlJTJGNzY0ODExMl83MjM2MjczMTczMzc3NjY3MTg1OS5wbmciLCJzb3VyY2UiOiJhbmRyb2lkIn0%3D" target="_blank" class="certificate-link">Certificate 2 - Getting started with NodeJS</a></li>
+                <li><a href="https://simpli.app.link?%24identity_id=1380047394510800367&channel=android&feature=sharing&type=0&duration=0&source=android&data=eyIkb2dfdGl0bGUiOiJBc2h3aW4gS3VtYXIgTSAgaGFzIHN1Y2Nlc3NmdWxseSBjb21wbGV0ZWQgdGhlIEFuZ3VsYXIgQmFzaWNzIG9ubGluZSBjb3Vyc2UuIiwiJGNhbm9uaWNhbF9pZGVudGlmaWVyIjoiNzY1OTg3NyIsIiRvZ19kZXNjcmlwdGlvbiI6IkxlYXJuIHRvZGF5J3MgbW9zdCBpbi1kZW1hbmQgc2tpbGxzIGZvciBmcmVlIGF0IFNraWxsVXAgYnkgU2ltcGxpbGVhcm4uIiwiJG9nX2ltYWdlX3VybCI6Imh0dHBzOlwvXC9jZXJ0aWZpY2F0ZXMuc2ltcGxpY2RuLm5ldFwvc2hhcmVcLzc2NTk4NzdfNzIzNjI3MzE3MzQwMTQ0MDE1OTEucG5nIiwiJHB1YmxpY2x5X2luZGV4YWJsZSI6InRydWUiLCIkZGVza3RvcF91cmwiOiJodHRwczpcL1wvd3d3LnNpbXBsaWxlYXJuLmNvbVwvc2tpbGx1cC1jZXJ0aWZpY2F0ZS1sYW5kaW5nP3Rva2VuPWV5SmpiM1Z5YzJWZmFXUWlPaUl4TnpFNUlpd2lZMlZ5ZEdsbWFXTmhkR1ZmZFhKc0lqb2lhSFIwY0hNNlhDOWNMMk5sY25ScFptbGpZWFJsY3k1emFXMXdiR2xqWkc0dWJtVjBYQzl6YUdGeVpWd3ZOelkxT1RnM04xODNNak0yTWpjek1UY3pOREF4TkRRd01UVTVNUzV3Ym1jaUxDSjFjMlZ5Ym1GdFpTSTZJa0Z6YUhkcGJpQkxkVzFoY2lCTklDSjkmdXRtX3NvdXJjZT1zaGFyZWQtY2VydGlmaWNhdGUmdXRtX21lZGl1bT1hcHBfbG1zJnV0bV9jYW1wYWlnbj1zaGFyZWQtY2VydGlmaWNhdGUtcHJvbW90aW9uJnJlZmVycmVyPWh0dHBzJTNBJTJGJTJGY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXQlMkZzaGFyZSUyRjc2NTk4NzdfNzIzNjI3MzE3MzQwMTQ0MDE1OTEucG5nIiwiJGFuZHJvaWRfdXJsIjoiaHR0cHM6XC9cL3d3dy5zaW1wbGlsZWFybi5jb21cL3NraWxsdXAtY2VydGlmaWNhdGUtbGFuZGluZz90b2tlbj1leUpqYjNWeWMyVmZhV1FpT2lJeE56RTVJaXdpWTJWeWRHbG1hV05oZEdWZmRYSnNJam9pYUhSMGNITTZYQzljTDJObGNuUnBabWxqWVhSbGN5NXphVzF3YkdsalpHNHVibVYwWEM5emFHRnlaVnd2TnpZMU9UZzNOMTgzTWpNMk1qY3pNVGN6TkRBeE5EUXdNVFU1TVM1d2JtY2lMQ0oxYzJWeWJtRnRaU0k2SWtGemFIZHBiaUJMZFcxaGNpQk5JQ0o5JnV0bV9zb3VyY2U9c2hhcmVkLWNlcnRpZmljYXRlJnV0bV9tZWRpdW09YXBwX2xtcyZ1dG1fY2FtcGFpZ249c2hhcmVkLWNlcnRpZmljYXRlLXByb21vdGlvbiZyZWZlcnJlcj1odHRwcyUzQSUyRiUyRmNlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0JTJGc2hhcmUlMkY3NjU5ODc3XzcyMzYyNzMxNzM0MDE0NDAxNTkxLnBuZyIsInNvdXJjZSI6ImFuZHJvaWQifQ%3D%3D" target="_blank" class="certificate-link">Certificate 3 - Angular Basics</a></li>
+            </ul>
+        </div>
+        </div>
+    </section>
+
+    <section id="education" class="education section bg-light py-5">
+        <div class="container-fluid text-center">
+            <h2 class="text-center mb-5" style="font-family: 'Times New Roman', serif;"><b>EDUCATION</b></h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="education-item p-4 border rounded shadow-sm bg-white" >
+                        <h5 class="text-secondary">Bachelor of Computer Applications</h5>
+                        <p class="text-muted">Mangalore University</p>
+                        <p class="education-description">I completed my Bachelor of Computer Applications (BCA) from Shreedevi College, Mangalore, affiliated with Mangalore University. The program follows the National Education Policy (NEP) syllabus, which emphasizes a comprehensive understanding of computer science, programming, data management, and technology applications. This academic foundation equipped me with strong problem-solving skills and a deep understanding of computer systems, making me well-prepared for a career in software development and IT.</p>
+                        <div class="collapse" id="btech-details">
+                            <p class="text-muted">Marks: 7.93 CGPA</p>
+                            <p class="text-muted">Year of Passing: 2024</p>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm mt-2 toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#btech-details" aria-expanded="false" aria-controls="btech-details">
+                            <span>Show More</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="education-item p-4 border rounded shadow-sm bg-white">
+                        <h5 class="text-secondary">High School and Higher-Secondary</h5>
+                        <p class="text-muted">Jawahar Navodaya Vidyalaya</p>
+                        <p class="education-description">I completed my 10th and 12th grades from Jawahar Navodaya Vidyalaya (JNV), Kasargod, following the CBSE curriculum. The rigorous academic environment at JNV, combined with a focus on holistic development, helped me build a strong foundation in various subjects, particularly in science and mathematics, setting the stage for my future academic and professional pursuits in technology.Additionally, the hostel facilities and the emphasis on high-quality education provided a conducive environment for both personal and academic growth.</p>
+                        <div class="collapse" id="msc-details">
+                            <p class="text-muted">Marks 12th: 83.2%</p>
+                            <p class="text-muted">Year of Passing: 2021</p>
+                            <p class="text-muted">Marks 10th: 90.6%</p>
+                            <p class="text-muted">Year of Passing: 2019</p>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm mt-2 toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#msc-details" aria-expanded="false" aria-controls="msc-details">
+                            <span>Show More</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills section bg-light">
+        <div class="container-fluid">
+            <h2 class="text-center" style="font-family: 'Times New Roman', serif;"><b>SKILLS</b></h2>
+            <div class="row pt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>HTML & CSS</h5>
+                        <p>Proficient in creating responsive and visually appealing web pages using HTML and CSS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>JavaScript</h5>
+                        <p>Experienced in building interactive user interfaces and dynamic web applications.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Python</h5>
+                        <p>Skilled in writing efficient and logical Python scripts for various tasks and problem-solving.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Java</h5>
+                        <p>Proficient in developing object-oriented applications using Java.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>SQL</h5>
+                        <p>Experienced in designing and managing relational databases with SQL.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Frameworks</h5>
+                        <p>Familiar with frameworks like React and Angular for building scalable web applications.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>C</h5>
+                        <p>Proficient in C programming, focusing on efficient memory management, data structures, and algorithm implementation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Bootstrap</h5>
+                        <p>Proficient in using Bootstrap for building responsive and visually appealing web applications with pre-designed components and grid systems.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Project management</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Ability to work in a team</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Efficient task organization</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Rapid skill acquisition</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Microsoft Office</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skill-box">
+                        <h5>Analytical and coding skills</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages" class="languages section bg-light py-5">
+        <div class="container-fluid">
+            <h2 class="text-center mb-4" style="font-family: 'Times New Roman', serif;"><b>LANGUAGES</b></h2>
+            <div class="row justify-content-center pt-4">
+                <div class="col-md-8">
+                    <ul class="list-group">
+                        <li class="list-group-item language-item">
+                            <strong>English</strong>: Fluent in speaking, writing, and professional communication.
+                        </li>
+                        <li class="list-group-item language-item">
+                            <strong>Hindi</strong>:capable of conversational speaking and basic writing.
+                        </li>
+                        <li class="list-group-item language-item">
+                            <strong>Malayalam</strong>: Fluent in speaking and writing; native language proficiency.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact section bg-secondary py-5">
+        <div class="container-fluid text-center">
+            <div class="contact-details-box py-4 px-5 mb-4" style="font-family: 'Times New Roman', serif;">
+                <h2 class="text-light pb-4" style="font-family: 'Times New Roman', serif;"><b>CONTACT ME</b></h2>
+                <p class="text-light"><strong>Email:</strong>ashwinmullachery@gmail.com</p>
+                <p class="text-light"><strong>Phone:</strong> +91 9207362709</p>
+                <p class="text-light"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ashwin-kumar-m-a62bb22b2" target="_blank" class="text-white">Ashwin Kumar M</a></p>
+                <p class="text-light"><strong>GitHub:</strong> <a href="https://github.com/ashwin-k-m" target="_blank" class="text-white">ashwin-k-m</a></p>
+            </div>
+            <h3 id="connect" class="mt-5 pb-4 text-light" style="font-family: 'Times New Roman', serif;"><b>SEND AN INQUIRY</b></h3>
+            <form action="https://formspree.io/f/movqoyza" method="POST" class="contact-form mt-4">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control bg-light" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="email" class="form-control bg-light" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="tel" class="form-control bg-light" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control bg-light" id="place" name="place" placeholder="Place or Firm" required>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <textarea class="form-control bg-light" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary" style="font-family: 'Times New Roman', serif;"><b>Send Message</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container-fluid">
+            <h5 style="font-family: 'Times New Roman', serif;">Follow Me On</h5>
+            <div>
+                <a href="https://www.instagram.com/_asxwin_m_" target="_blank" class="text-white mx-3">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="https://wa.me/9207362709" target="_blank" class="text-white mx-3">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                </a>
+                <a href="https://www.facebook.com/ashwin.kumarm.520" target="_blank" class="text-white mx-3">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+            </div>
+            <p class="mt-3" style="font-family: 'Times New Roman', serif;">&copy; 2024 Ashwin Kumar-M . All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+            if (!name || !email || !phone || !message) {
+                alert("Please fill in all fields!");
+                event.preventDefault();
+            }
+        });
+        document.getElementById("see-more-btn").addEventListener("click", function() {
+            var extraProjects = document.querySelectorAll(".extra-projects");
+            for (var i = 0; i < extraProjects.length; i++) {
+                extraProjects[i].style.display = "block";
+            }
+            document.getElementById("see-more-btn").style.display = "none";
+            document.getElementById("see-less-btn").style.display = "inline-block";
+        });
+        document.getElementById("see-less-btn").addEventListener("click", function() {
+            var extraProjects = document.querySelectorAll(".extra-projects");
+            for (var i = 0; i < extraProjects.length; i++) {
+                extraProjects[i].style.display = "none";
+            }
+            document.getElementById("see-more-btn").style.display = "inline-block";
+            document.getElementById("see-less-btn").style.display = "none";
+        });
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.querySelector('span').textContent = isExpanded ? 'Show More' : 'Show Less';
+            });
+        });
+    </script>
+
+</body>
+</html>
